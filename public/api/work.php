@@ -1,6 +1,14 @@
 <?php
 
-// POST only, as work is normally listed with tasks
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-     // The request is using the POST method
-}
+require '../../app/common.php';
+
+// Get the task id associated with the Worker
+$taskId = $_GET['taskId'] ?? 0;
+
+
+// Fetch work from SQLiteDatabase
+$work - Work::findByTaskId($taskId);
+
+
+// Convert to JSON and print
+echo json_encode($work);
