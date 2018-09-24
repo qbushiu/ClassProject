@@ -24,12 +24,24 @@ var dashboardApp = new Vue({
         hours_worked: '',
         perc_complete: '',
         current_sprint : ''
+        
       }
-    ]
+    ],
+    filter: {
+      showOpenClose: 'all',
+      current_sprint_only: false
+    }
   },
   computed: {
     days_left: function () {
       return moment(this.project.target_date).diff(moment(), 'days')
+    },
+    filteredTasks () {
+      return this.tasks.filter(t =>
+        (this.filter.showOpenClose === 'open' && !t.close_date) ||
+        (this.filter.showOpenClose === 'closed' && t.close_date) ||
+        this.filter.showOpenClose === 'all'
+      )
     }
   },
   methods: {
@@ -58,7 +70,6 @@ var dashboardApp = new Vue({
     fetchTasks () {
       fetch('https://raw.githubusercontent.com/tag/iu-msis/dev/public/p1-tasks.json')
       .then( response => response.json() )
-      // ^ This is the same as .then( function(response) {return response.json()} )
       .then( json => {dashboardApp.tasks = json} )
       .catch( err => {
         console.log('TASK FETCH ERROR:');
@@ -75,7 +86,7 @@ var dashboardApp = new Vue({
       })
     },
     gotoTask(tid) {
-      window.location = 'task.html?taskId=' + tid;
+      window.location = 'task.html?taskId='+tid;
     }
   },
   created () {

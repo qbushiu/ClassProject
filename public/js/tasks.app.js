@@ -67,7 +67,7 @@ var tasksApp = new Vue({
   methods: {
     handleWorkForm(e) {
       // TODO: Check validity
-      e.preventDefault(); // Dont need this if prevented w/ Vue in HTML
+      e.preventDefault();
       console.log(e);
       alert(JSON.stringify(this.workForm));
 
@@ -77,8 +77,6 @@ var tasksApp = new Vue({
       //TODO: clone workForm
       const s = JSON.stringify(this.workForm);
       //TODO: POST to remote server
-      // fetch ( ... )
-      
       //TODO: Append result
       this.work.push(JSON.parse(s));
 
@@ -90,25 +88,10 @@ var tasksApp = new Vue({
       }
     },
     sumHours() {
-      return this.work.reduce(
-        (sum, current) => sum + current.hours,
-        0
-      )
+      return this.work.reduce( (sum, current) => sum + current.hours, 0 )
     },
     diffAsHours() {
       return 0 //moment().duration(end.diff(startTime)).asHours();
-    },
-    fetchTask(tid) {
-      const url = 'stub';
-
-      fetch(url + '?task='+taskId)
-      .then( response => response.json() )
-      // ^ This is the same as .then( function(response) {return response.json()} )
-      .then( json => {dashboardApp.tasks = json} )
-      .catch( err => {
-        console.log('TASK FETCH ERROR:');
-        console.log(err);
-      })
     }
   },
   created () {
@@ -124,6 +107,5 @@ var tasksApp = new Vue({
     }
 
     // TODO: Fetch task-specific data
-    this.fetchTask(taskId);
   }
 })
