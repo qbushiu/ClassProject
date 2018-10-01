@@ -1,5 +1,7 @@
 <?php
 
-echo "here!";
+$work = new Work($_POST);
 
-var_dump($_POST);
+$work->create();
+
+echo json_encode($work);
