@@ -1,4 +1,4 @@
-
+This code has been constantly over written with Professor Gregory's code to insure a uniform environment
 
 # Editor
 We will use Atom in class, although you may use whichever editor you prefer. If you want to use vim, I won’t stop you.

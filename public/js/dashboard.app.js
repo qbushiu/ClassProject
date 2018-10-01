@@ -24,7 +24,7 @@ var dashboardApp = new Vue({
         hours_worked: '',
         perc_complete: '',
         current_sprint : ''
-        
+
       }
     ],
     filter: {
@@ -86,7 +86,8 @@ var dashboardApp = new Vue({
       })
     },
     gotoTask(tid) {
-      window.location = 'task.html?taskId='+tid;
+      // alert ('Clicked: ' + tid)
+      window.location = 'task.html?taskId=' + tid;
     }
   },
   created () {

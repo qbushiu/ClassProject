@@ -12,7 +12,7 @@ class Work
 
   public function __construct($row) {
     $this->id = intval($row['id']);
-    
+
     $this->task_id = intval($row['task_id']);
     $this->team_id = intval($row['team_id']);
 
@@ -30,6 +30,7 @@ class Work
 
     $this->completion_estimate = intval($row['completion_estimate']);
   }
+
   public static function getWorkByTaskId(int $taskId) {
     // 1. Connect to the database
     $db = new PDO(DB_SERVER, DB_USER, DB_PW);
@@ -46,15 +47,15 @@ class Work
 
     // 4. Handle the results
     $arr = [];
-
     while ($row = $statement->fetch(PDO::FETCH_ASSOC)) {
-
       // 4.a. For each row, make a new work object
       $workItem =  new Work($row);
 
       array_push($arr, $workItem);
     }
+
     // 4.b. return the array of work objects
+
     return $arr;
   }
 }

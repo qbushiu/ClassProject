@@ -2,15 +2,19 @@
 
 require '../../app/common.php';
 
-// Get the task id associated with the Worker
-$taskId = $_GET['taskId'] ?? 0;
+$taskId = intval($_GET['taskId'] ?? 0);
+
+if ($taskId < 1) {
+  throw new Exception('Invalid Task ID');
+}
 
 
-// Fetch work from SQLiteDatabase
-$work - Work::findByTaskId($taskId);
+// 1. Go to the database and get all work associated with the $taskId
+$workArr = Work::getWorkByTaskId($taskId);
 
+// 2. Convert to JSON
+$json = json_encode($workArr, JSON_PRETTY_PRINT);
 
-// Convert to JSON and print
-header('Content-type: application/json');
-
-echo json_encode($work);
+// 3. Print
+header('Content-Type: application/json');
+echo $json;
