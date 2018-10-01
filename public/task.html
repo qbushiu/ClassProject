@@ -88,6 +88,16 @@
                   <p>
                     Completion estimate
                     <input type="numeric" name="completion_estimate" v-model.lazy="workForm.completion_estimate">
+
+            <div class="for-group row">
+              <label for="team" class="col-sm-1 col-form-label">Team: </label>
+              <div class="col-sm-6">
+                <select type="datetime-local" id="stop" v-model="workForm.team" class="form-control" required></select>
+                <option v-for="t in teamList"
+                  :key="t.id"
+                  :value="t.id">{{ t.name }}</option>
+              </div>
+            </div>
                   </p>
                   <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                   <button type="submit" class="btn btn-primary">Save changes</button>

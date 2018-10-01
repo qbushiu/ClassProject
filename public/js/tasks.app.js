@@ -62,7 +62,8 @@ var tasksApp = new Vue({
       start: '',
       stop: '',
       completion_estimate: ''
-    }
+    },
+    teamList: []
   },
   methods: {
     handleWorkForm(e) {
@@ -107,5 +108,19 @@ var tasksApp = new Vue({
     }
 
     // TODO: Fetch task-specific data
+    fetch('api/work.php?taskId='+taskId)
+    .then( response => response.json() )
+    .then( json => {taskApp.work = json} )
+    .catch( err => {
+      console.log('WORK FETCH ERROR:');
+      console.log(err);
+    })
+    fetch('api/team.php?taskId='+taskId)
+    .then( response => response.json() )
+    .then( json => {taskApp.teamList = json} )
+    .catch( err => {
+      console.log('TEAM LIST ERROR:');
+      console.log(err);
+    })
   }
 })
