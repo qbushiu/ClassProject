@@ -36,6 +36,7 @@ public function create() {
   $sql = 'INSERT INTO Work (tast_id, team_id, start_date, hours, completion_estimate) VALUES(?, ?, ?, ?, ?)';
 
   $statement = $db->prepare($sql);
+  
   $success = $statement->execute([
     $this->task_id,
     $this->team_id,
