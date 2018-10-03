@@ -31,10 +31,12 @@ var tasksApp = new Vue({
       if (this.computed <= 0) {
         console.error("invalid form")
       }
-
-      this.workForm.strat_date = this.workForm.start + this.workForm.start_time;
+      this.workForm.task_id = this.taskId;
+      this.workForm.hours = this.workSpan;
+      this.workForm.strat_date = this.workForm.start + ' ' + this.workForm.start_time;
 
       const s = JSON.stringify(this.workForm);
+      console.log(s);
 
       //TODO: POST to remote server
       fethc('api/work.php', {
@@ -54,7 +56,7 @@ var tasksApp = new Vue({
       return this.work.reduce( (sum, current) => sum + current.hours, 0 )
     },
     diffAsHours() {
-      return 0 //moment().duration(end.diff(startTime)).asHours();
+      return 0; //moment().duration(end.diff(startTime)).asHours();
     },
     dateFormat(d) {
       d = d || moment();
@@ -82,6 +84,7 @@ var tasksApp = new Vue({
     const url = new URL(window.location.href);
     const taskId = url.searchParams.get('taskId');
     console.log('Task: '+ taskId);
+    this.taskId = taskTd
 
     if (!taskId) {
       //TODO: Error? 404?
