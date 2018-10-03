@@ -84,7 +84,7 @@ var tasksApp = new Vue({
     const url = new URL(window.location.href);
     const taskId = url.searchParams.get('taskId');
     console.log('Task: '+ taskId);
-    this.taskId = taskTd
+    this.taskId = taskId
 
     if (!taskId) {
       //TODO: Error? 404?
