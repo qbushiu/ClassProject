@@ -93,7 +93,7 @@ var tasksApp = new Vue({
 
     // TODO: Fetch task-specific data
     // fetch('api/task?id=4')
-    fetch('api/work.php?taskId='+taskId)
+    fetch('api/work.php?taskId='+ taskId)
     .then( response => response.json() )
     .then( json => {tasksApp.work = json} )
     .catch( err => {
