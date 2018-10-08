@@ -24,24 +24,12 @@ var dashboardApp = new Vue({
         hours_worked: '',
         perc_complete: '',
         current_sprint : ''
-
       }
-    ],
-    filter: {
-      showOpenClose: 'all',
-      current_sprint_only: false
-    }
+    ]
   },
   computed: {
     days_left: function () {
       return moment(this.project.target_date).diff(moment(), 'days')
-    },
-    filteredTasks () {
-      return this.tasks.filter(t =>
-        (this.filter.showOpenClose === 'open' && !t.close_date) ||
-        (this.filter.showOpenClose === 'closed' && t.close_date) ||
-        this.filter.showOpenClose === 'all'
-      )
     }
   },
   methods: {
