@@ -91,10 +91,10 @@ var tasksApp = new Vue({
     console.log('Task: '+ taskId);
     this.task.id = taskId;
 
-  //  if (!taskId) {
+    if (!taskId) {
       //TODO: Error? 404?
       //e.g., window.location = '404.html';
-    //}
+    }
 
     // Populate workForm with default values
     this.workForm = this.getEmptyWorkForm();
