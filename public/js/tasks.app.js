@@ -16,7 +16,8 @@ var tasksApp = new Vue({
     },
     work: [ ],
     workForm: { },   // populated by this.getEmptyWorkForm()
-    teamList: [] // All the teams
+    teamList: [],
+    taskId: 0 // All the teams
   },
   computed: {
     workSpan () {
