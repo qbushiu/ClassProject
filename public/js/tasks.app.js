@@ -83,10 +83,11 @@ var tasksApp = new Vue({
     }
   },
   created () {
-
+    this.workForm = this.getEmptyWorkForm();
+        console.log(window.location.href);
     // Do data fetch
     const url = new URL(window.location.href);
-    const taskId = url.searchParams.get('taskId');
+    const taskId = url.searchParams.get("taskId");
     console.log('Task: '+ taskId);
     this.task.id = taskId;
 
